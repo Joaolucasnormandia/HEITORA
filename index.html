@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Contagem da Promessa do Heitor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      color: #fff;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    #countdown {
+      font-size: 2.5rem;
+      color: #00ffcc;
+    }
+
+    img{
+        height: 300px;
+        
+    }
+  </style>
+</head>
+<body>
+    <img src="https://i.postimg.cc/gj7XpGkF/image-removebg-preview.png" alt="">
+  <h1>Contagem da promessa do Heitor 🕒</h1>
+  <div id="countdown">Carregando...</div>
+
+  <script>
+    // Início: 09/04/2025 às 00:00
+    const startDate = new Date("2025-04-09T00:00:00").getTime();
+    // Fim: 16/04/2025 às 00:00
+    const endDate = new Date("2025-04-16T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+
+      if (now < startDate) {
+        const timeUntilStart = startDate - now;
+
+        const days = Math.floor(timeUntilStart / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeUntilStart % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeUntilStart % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeUntilStart % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML =
+          `⏳ Promessa ainda não começou! Começa em: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+
+      else if (now >= startDate && now < endDate) {
+        const timeLeft = endDate - now;
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML =
+          `🔥 Tempo restante: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+
+      else {
+        document.getElementById("countdown").innerHTML = "✅ Promessa finalizada!";
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
